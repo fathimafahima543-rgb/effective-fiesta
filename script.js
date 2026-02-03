@@ -34,27 +34,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add animation to stats on scroll
     const statValues = document.querySelectorAll('.stat-value');
+    const FRAME_DURATION_MS = 16; // ~60fps (1000ms / 60 frames)
     
-    function animateValue(element, start, end, duration) {
+    function animateValue(statElement, start, end, duration) {
         // Clear any existing timer to prevent memory leaks
-        if (element.animationTimer) {
-            clearInterval(element.animationTimer);
+        if (statElement.animationTimer) {
+            clearInterval(statElement.animationTimer);
         }
         
         const range = end - start;
-        const increment = range / (duration / 16);
+        const increment = range / (duration / FRAME_DURATION_MS);
         let current = start;
         
-        element.animationTimer = setInterval(() => {
+        statElement.animationTimer = setInterval(() => {
             current += increment;
             if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
-                element.textContent = formatStatValue(end);
-                clearInterval(element.animationTimer);
-                element.animationTimer = null;
+                statElement.textContent = formatStatValue(end);
+                clearInterval(statElement.animationTimer);
+                statElement.animationTimer = null;
             } else {
-                element.textContent = formatStatValue(Math.floor(current));
+                statElement.textContent = formatStatValue(Math.floor(current));
             }
-        }, 16);
+        }, FRAME_DURATION_MS);
     }
 
     function formatStatValue(value) {
