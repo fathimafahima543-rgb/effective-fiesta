@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-image-container">
+                    <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-image" id="profileImage">
+                    <div class="image-overlay">
+                        <span class="change-photo-text">Change Photo</span>
+                    </div>
+                </div>
+                <h1 class="profile-name" id="profileName">John Doe</h1>
+                <p class="profile-title" id="profileTitle">Full Stack Developer</p>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span class="stat-value">127</span>
+                    <span class="stat-label">Posts</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">1.2K</span>
+                    <span class="stat-label">Followers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">342</span>
+                    <span class="stat-label">Following</span>
+                </div>
+            </div>
+
+            <div class="profile-bio">
+                <h2>About</h2>
+                <p id="bioText">
+                    Passionate developer with a love for creating elegant solutions to complex problems. 
+                    Experienced in web technologies and cloud infrastructure. Always learning and growing.
+                </p>
+            </div>
+
+            <div class="profile-info">
+                <h2>Information</h2>
+                <div class="info-item">
+                    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <span id="email">john.doe@example.com</span>
+                </div>
+                <div class="info-item">
+                    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span id="location">San Francisco, CA</span>
+                </div>
+                <div class="info-item">
+                    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 00-2-2h-5l-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2z"/>
+                    </svg>
+                    <span id="website">www.johndoe.dev</span>
+                </div>
+            </div>
+
+            <div class="profile-actions">
+                <button class="btn btn-primary" id="editProfileBtn">Edit Profile</button>
+                <button class="btn btn-secondary" id="shareProfileBtn">Share</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
