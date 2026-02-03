@@ -36,15 +36,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const statValues = document.querySelectorAll('.stat-value');
     
     function animateValue(element, start, end, duration) {
+        // Clear any existing timer to prevent memory leaks
+        if (element.animationTimer) {
+            clearInterval(element.animationTimer);
+        }
+        
         const range = end - start;
         const increment = range / (duration / 16);
         let current = start;
         
-        const timer = setInterval(() => {
+        element.animationTimer = setInterval(() => {
             current += increment;
             if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
                 element.textContent = formatStatValue(end);
-                clearInterval(timer);
+                clearInterval(element.animationTimer);
+                element.animationTimer = null;
             } else {
                 element.textContent = formatStatValue(Math.floor(current));
             }
@@ -60,9 +66,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Trigger animation on page load
     setTimeout(() => {
-        const statsData = [127, 1200, 342];
-        statValues.forEach((stat, index) => {
-            const targetValue = statsData[index];
+        statValues.forEach((stat) => {
+            // Parse the original value from the HTML to maintain single source of truth
+            const textContent = stat.textContent.trim();
+            let targetValue;
+            
+            if (textContent.endsWith('K')) {
+                targetValue = parseFloat(textContent) * 1000;
+            } else {
+                targetValue = parseInt(textContent, 10);
+            }
+            
             animateValue(stat, 0, targetValue, 1000);
         });
     }, 300);
